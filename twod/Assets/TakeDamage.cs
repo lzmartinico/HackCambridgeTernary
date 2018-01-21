@@ -41,7 +41,7 @@ public class TakeDamage : MonoBehaviour {
             if (!invincible)
             {
                 //Debug.Log("AAAAAGGGGGHHHHHHH");
-                var damage = col.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude * col.gameObject.GetComponent<Rigidbody2D>().mass / Time.deltaTime;
+                var damage = col.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude * col.gameObject.GetComponent<Rigidbody2D>().mass / Time.deltaTime * (col.gameObject.name.Contains("(") ? 2 : 1);
                 //Debug.Log(damage);
 
                 currentHealth -= (int)damage;
@@ -50,6 +50,10 @@ public class TakeDamage : MonoBehaviour {
                 {
                     GetComponent<FixedJoint2D>().enabled = false;
                     GetComponent<Rigidbody2D>().AddForce((transform.position - col.gameObject.transform.position).normalized * col.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude * 300);
+                    if (Input.GetKeyDown("r"))
+                    {
+
+                    }
                 }
 
 
